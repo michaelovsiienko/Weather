@@ -145,7 +145,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == Constants.SETTING_REQUEST_CODE) {
-            if (data.getStringExtra(Constants.CITY_NAME) != null) {
+            if (data != null && data.getStringExtra(Constants.CITY_NAME) != null) {
                 mCityName = data.getStringExtra(Constants.CITY_NAME);
                 mPresenter.editChosenCity(mCityName);
                 mPresenter.fetchWeatherInfo(mCityName);
