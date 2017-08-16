@@ -71,12 +71,6 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
 
         mPresenter.fetchWeatherInfo(mCityName);
 
-        scheduleAlarm();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
         mReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
@@ -88,7 +82,9 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         };
 
         this.registerReceiver(mReceiver, new IntentFilter(Constants.BROADCAST_ACTION));
+        scheduleAlarm();
     }
+
 
     @Override
     protected void onDestroy() {
