@@ -115,12 +115,12 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     @Override
     public void showWeatherInfo(MainInfo info) {
         mTextViewCityName.setText(mCityName);
-        mTextViewCurrentTemp.setText(String.format(getResources().getString(R.string.current_temp), info.getMain().getTemp()));
+        mTextViewCurrentTemp.setText(String.format("%.1f°", info.getMain().getTemp()));
         mTextViewWeatherDesc.setText(String.valueOf(info.getWeather().get(0).getDescription()));
-        mTextViewMinMaxTemp.setText(String.format(getResources().getString(R.string.min_max_temp), info.getMain().getTempMax(), info.getMain().getTempMin()));
+        mTextViewMinMaxTemp.setText(String.format("%.1f° - %.1f°", info.getMain().getTempMax(), info.getMain().getTempMin()));
         Picasso
                 .with(getContext())
-                .load(String.format(getResources().getString(R.string.weather_image_url),
+                .load(String.format("%s%s.png",
                         ApiConstants.IMAGE_SERVER_URL, info.getWeather().get(0).getIcon()))
                 .into(mImageViewCityIcon);
         mTextViewLastUpdate.setText(String.format(getString(R.string.last_update), Utils.getFormattedTime()));

@@ -1,8 +1,5 @@
 <resources>
     <string name="app_name">Weather</string>
-    <string name="min_max_temp">%.1f° - %.1f°</string>
-    <string name="current_temp">%.1f°</string>
-    <string name="weather_image_url">%s%s.png</string>
     <string name="action_settings">Настройки</string>
     <string name="error_network_state">Ошибка подключения</string>
     <string name="last_update">Последнее обновление: %s</string>
