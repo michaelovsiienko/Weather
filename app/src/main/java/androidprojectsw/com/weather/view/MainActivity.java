@@ -26,39 +26,30 @@ import androidprojectsw.com.weather.api.ApiConstants;
 import androidprojectsw.com.weather.contract.MainContract;
 import androidprojectsw.com.weather.model.MainInfo;
 import androidprojectsw.com.weather.presenter.MainPresenter;
-import butterknife.BindView;
-import butterknife.ButterKnife;
+
 
 public class MainActivity extends AppCompatActivity implements MainContract.View {
 
     private MainContract.Presenter mPresenter;
     private String mCityName;
     private BroadcastReceiver mReceiver;
-    @BindView(R.id.toolbar)
-    Toolbar mToolbar;
-    @BindView(R.id.progressBar)
-    ProgressBar mProgress;
-    @BindView(R.id.main_layout)
-    ConstraintLayout mLayoutMain;
-    @BindView(R.id.tv_city_name)
-    TextView mTextViewCityName;
-    @BindView(R.id.tv_current_temp)
-    TextView mTextViewCurrentTemp;
-    @BindView(R.id.tv_minmax_temp)
-    TextView mTextViewMinMaxTemp;
-    @BindView(R.id.tv_weather_description)
-    TextView mTextViewWeatherDesc;
-    @BindView(R.id.tv_last_update)
-    TextView mTextViewLastUpdate;
 
-    @BindView(R.id.iv_city_icon)
-    ImageView mImageViewCityIcon;
+    private Toolbar mToolbar;
+    private ProgressBar mProgress;
+    private ConstraintLayout mLayoutMain;
+    private TextView mTextViewCityName;
+    private TextView mTextViewCurrentTemp;
+    private TextView mTextViewMinMaxTemp;
+    private TextView mTextViewWeatherDesc;
+    private TextView mTextViewLastUpdate;
+
+    private ImageView mImageViewCityIcon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
+        initViews();
         setSupportActionBar(mToolbar);
         mPresenter = new MainPresenter(this);
 
@@ -158,5 +149,16 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
             alarm.setRepeating(AlarmManager.RTC_WAKEUP,
                     Calendar.getInstance().getTimeInMillis() + AlarmManager.INTERVAL_HALF_HOUR, AlarmManager.INTERVAL_HALF_HOUR, pIntent);
         }
+    }
+    private void initViews(){
+        mToolbar = findViewById(R.id.toolbar);
+        mProgress = findViewById(R.id.progressBar);
+        mLayoutMain = findViewById(R.id.main_layout);
+        mTextViewCityName = findViewById(R.id.tv_city_name);
+        mTextViewCurrentTemp = findViewById(R.id.tv_current_temp);
+        mTextViewMinMaxTemp = findViewById(R.id.tv_minmax_temp);
+        mTextViewWeatherDesc = findViewById(R.id.tv_weather_description);
+        mTextViewLastUpdate = findViewById(R.id.tv_last_update);
+        mImageViewCityIcon = findViewById(R.id.iv_city_icon);
     }
 }

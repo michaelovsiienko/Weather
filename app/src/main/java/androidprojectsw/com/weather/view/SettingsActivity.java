@@ -12,21 +12,19 @@ import android.widget.ListView;
 
 import androidprojectsw.com.weather.Constants;
 import androidprojectsw.com.weather.R;
-import butterknife.BindView;
-import butterknife.ButterKnife;
+
 
 public class SettingsActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
-    @BindView(R.id.toolbar)
-    Toolbar mToolbar;
-    @BindView(R.id.lv_cities)
-    ListView mListViewCities;
+    private Toolbar mToolbar;
+    private ListView mListViewCities;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-        ButterKnife.bind(this);
+        mToolbar = findViewById(R.id.toolbar);
+        mListViewCities = findViewById(R.id.lv_cities);
         setSupportActionBar(mToolbar);
         if (getSupportActionBar() != null){
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
